@@ -1,36 +1,79 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MPM Services Web Application
 
-## Getting Started
+This directory contains the web application for **Melbourne Property Management and Services (MPM Services)**.
 
-First, run the development server:
+## 🌐 Live Site
 
-```bash
+**https://mpm-services.vercel.app/**
+
+## 🛠️ Stack
+
+- Next.js 16
+- React 19
+- TypeScript
+- Custom CSS design system
+- Vercel deployment
+
+## 🧭 Routes
+
+~~~text
+/
+├── /about
+├── /contact
+├── /faq
+├── /gallery
+├── /privacy
+├── /quote
+├── /reviews
+├── /service-areas
+├── /services
+│   └── /services/[slug]
+└── /terms
+~~~
+
+## 🎯 Core Services
+
+- Steam Cleaning
+- Strip & Polish
+- Property Maintenance
+
+## 🚀 Development
+
+From the web directory:
+
+~~~bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+~~~
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then open:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+~~~text
+http://localhost:3000
+~~~
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📦 Production
 
-## Learn More
+~~~bash
+npm run build
+npm run start
+~~~
 
-To learn more about Next.js, take a look at the following resources:
+## 🧱 Structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+~~~text
+web/
+├── app/          # Routes and page-level configuration
+├── components/  # Reusable UI and page sections
+├── lib/          # Site configuration, SEO and content
+├── public/       # Images and static assets
+└── package.json
+~~~
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🔎 SEO
 
-## Deploy on Vercel
+The application includes page metadata, canonical URLs, Open Graph data, sitemap and robots configuration, and structured data for the business, website, breadcrumbs, and FAQs.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📄 License
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The project is covered by the proprietary **All Rights Reserved** license defined in the repository root: [LICENSE](../LICENSE).
