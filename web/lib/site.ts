@@ -22,6 +22,7 @@ export type NavItem = {
 
 export const mainNav: NavItem[] = [
   { label: "Home", href: "/" },
+  { label: "About", href: "/about" },
   {
     label: "Services",
     href: "/services",
@@ -32,9 +33,8 @@ export const mainNav: NavItem[] = [
     ],
   },
   { label: "Gallery", href: "/gallery" },
+  { label: "Blog", href: "/blog" },
   { label: "Reviews", href: "/reviews" },
-  { label: "Service Areas", href: "/service-areas" },
-  { label: "About", href: "/about" },
   { label: "FAQ", href: "/faq" },
   { label: "Contact", href: "/contact" },
 ];

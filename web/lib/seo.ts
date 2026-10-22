@@ -15,7 +15,7 @@ export function localBusinessGraph() {
         telephone: site.phoneIntl,
         logo: {
           "@type": "ImageObject",
-          url: `${site.url}/images/website_logo.svg`,
+          url: `${site.url}/images/website_logo.png`,
         },
         sameAs: [site.facebook, site.instagram],
       },

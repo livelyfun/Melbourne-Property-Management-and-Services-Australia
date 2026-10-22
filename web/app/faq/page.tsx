@@ -25,7 +25,6 @@ export default function FaqPage() {
         eyebrow="FAQs"
         title="Common questions, honest answers"
         subtitle="No overpromising, no fine print. Here's how MPM Services actually works, in plain language."
-        crumbs={[{ label: "Home", href: "/" }, { label: "FAQs" }]}
       />
 
       <section className="section" aria-labelledby="faq-page-heading">

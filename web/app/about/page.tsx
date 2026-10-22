@@ -42,7 +42,6 @@ export default function AboutPage() {
         eyebrow="About"
         title="A local Melbourne business, focused on doing property services properly"
         subtitle="MPM Services is built on three core services and a simple idea: communicate clearly, do the work well, and treat every property like it matters."
-        crumbs={[{ label: "Home", href: "/" }, { label: "About" }]}
       />
 
       {/* Story */}

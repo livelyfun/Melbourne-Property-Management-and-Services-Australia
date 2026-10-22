@@ -23,7 +23,6 @@ export default function ServiceAreasPage() {
         eyebrow="Service Areas"
         title={coverageCopy.heading}
         subtitle="Property services across Melbourne, VIC. Find out where we work — and how to request a quote for your property."
-        crumbs={[{ label: "Home", href: "/" }, { label: "Service Areas" }]}
       />
 
       <section className="section" aria-labelledby="areas-covered-heading">

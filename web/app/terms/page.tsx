@@ -16,7 +16,6 @@ export default function TermsPage() {
         eyebrow="Legal"
         title="Terms of Service"
         subtitle="Simple terms for requesting quotes and engaging MPM Services."
-        crumbs={[{ label: "Home", href: "/" }, { label: "Terms" }]}
       />
 
       <section className="section">

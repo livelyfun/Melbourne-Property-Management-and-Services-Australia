@@ -1,38 +1,26 @@
-.reviews-pending {
-  max-width: 640px;
-  margin: var(--space-12) auto 0;
-  padding: var(--space-10);
-  background: var(--color-surface);
-  border: 1px dashed var(--color-border-strong);
-  border-radius: var(--radius-lg);
-  text-align: center;
+.reviews-teaser__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(1.1rem, 2vw, 1.5rem);
+  margin-top: var(--space-12);
 }
 
-.reviews-pending__icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: var(--color-brand-soft);
-  color: var(--color-brand);
-}
-
-.reviews-pending h3 {
-  margin-top: var(--space-5);
-  font-size: var(--text-2xl);
-}
-
-.reviews-pending p {
-  margin-top: var(--space-3);
-  color: var(--color-ink-soft);
-}
-
-.reviews-pending__actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-3);
-  justify-content: center;
+.reviews-sample-note {
   margin-top: var(--space-6);
+  font-size: var(--text-xs);
+  line-height: var(--leading-base);
+  color: var(--color-ink-muted);
+  max-width: 80ch;
+}
+
+@media (min-width: 768px) {
+  .reviews-teaser__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .reviews-teaser__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }

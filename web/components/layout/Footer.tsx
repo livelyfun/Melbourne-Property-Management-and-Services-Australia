@@ -30,7 +30,7 @@ export default function Footer() {
               <span className="site-footer__logo-sub">Melbourne Property<br />Management &amp; Services</span>
             </p>
             <p className="site-footer__tagline">
-              {site.tagline}. Local, professional and focused on clear communication from quote to completion.
+              {site.tagline} Local, professional and focused on clear communication from quote to completion.
             </p>
             <ul className="site-footer__social" role="list">
               {socials.map((s) => (

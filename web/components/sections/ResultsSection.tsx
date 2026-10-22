@@ -5,7 +5,10 @@ import ImageCard from "@/components/gallery/ImageCard";
 import { galleryItems } from "@/lib/mock-data/gallery";
 import "./ResultsSection.css";
 
-const featured = galleryItems.slice(0, 3);
+const pick = (id: string) => galleryItems.find((item) => item.id === id)!;
+
+const feature = pick("sc-01");
+const supporting = ["sp-03", "pm-03"].map((id) => pick(id));
 
 export default function ResultsSection() {
   return (
@@ -24,19 +27,32 @@ export default function ResultsSection() {
             </Link>
           </div>
         </Reveal>
-        <Reveal delay={120}>
-          <div className="results-grid" style={{ marginTop: "var(--space-12)" }}>
-            {featured.map((item) => (
-              <ImageCard
-                key={item.id}
-                src={item.src}
-                alt={item.alt}
-                caption={item.caption}
-                aspect="wide"
-              />
+        <div className="results-bento">
+          <Reveal>
+            <ImageCard
+              src={feature.src}
+              alt={feature.alt}
+              caption={feature.caption}
+              label="Illustrative"
+              aspect="panorama"
+              sizes="(max-width: 900px) 100vw, 75vw"
+            />
+          </Reveal>
+          <div className="results-bento__supporting">
+            {supporting.map((item, index) => (
+              <Reveal key={item.id} delay={index * 120}>
+                <ImageCard
+                  src={item.src}
+                  alt={item.alt}
+                  caption={item.caption}
+                  label="Illustrative"
+                  aspect="tall"
+                  sizes="(max-width: 900px) 100vw, 38vw"
+                />
+              </Reveal>
             ))}
           </div>
-        </Reveal>
+        </div>
       </div>
     </section>
   );

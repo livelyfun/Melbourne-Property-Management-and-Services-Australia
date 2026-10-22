@@ -1,3 +1,4 @@
+import Link from "next/link";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Reveal from "@/components/ui/Reveal";
 import ServiceCard from "@/components/services/ServiceCard";
@@ -8,13 +9,20 @@ export default function ServicesSection() {
     <section className="section" aria-labelledby="services-home-heading">
       <div className="container">
         <Reveal>
-          <SectionHeading
-            eyebrow="Our Services"
-            title="Three specialist services, focused on getting it right"
-            subtitle="Everything we do is organised around three core property services — delivered with clear communication from quote to completion."
-            align="center"
-            id="services-home-heading"
-          />
+          <div className="section-heading__row">
+            <SectionHeading
+              eyebrow="Our services"
+              title="Three services. One careful standard."
+              subtitle="Focused on the work that keeps a property clean, presentable and well maintained — with clear communication from quote to completion."
+              id="services-home-heading"
+            />
+            <Link
+              href="/services"
+              className="btn btn--secondary btn--md section-heading__action"
+            >
+              Compare services
+            </Link>
+          </div>
         </Reveal>
         <Reveal delay={120}>
           <div className="services-grid" style={{ marginTop: "var(--space-12)" }}>

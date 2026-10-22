@@ -34,7 +34,6 @@ export default function QuotePage() {
         eyebrow="Free Quote"
         title="Request a free quote"
         subtitle="Tell us about your job and we'll come back with a clear, no-obligation quote. Questions first? Call 0451 460 307."
-        crumbs={[{ label: "Home", href: "/" }, { label: "Get a Quote" }]}
       />
 
       <section className="section" aria-labelledby="quote-page-form">

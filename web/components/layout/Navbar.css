@@ -5,9 +5,21 @@
   position: sticky;
   top: 0;
   z-index: var(--z-nav);
-  background: rgb(255 255 255 / 0.92);
-  backdrop-filter: blur(10px);
+  background: rgb(255 255 255 / 0.9);
+  backdrop-filter: blur(14px) saturate(1.1);
   border-bottom: 1px solid var(--color-border);
+  transition: transform 340ms var(--ease), box-shadow var(--transition-base),
+    background-color var(--transition-base);
+  will-change: transform;
+}
+
+.site-header.is-scrolled {
+  background: rgb(255 255 255 / 0.96);
+  box-shadow: var(--shadow-sm);
+}
+
+.site-header.is-hidden {
+  transform: translateY(-100%);
 }
 
 .site-header__inner {
@@ -15,7 +27,7 @@
   align-items: center;
   justify-content: space-between;
   gap: var(--space-6);
-  min-height: 56px;
+  min-height: var(--header-h);
 }
 
 .brand {
@@ -27,7 +39,7 @@
 }
 
 .brand img {
-  width: clamp(80px, 17vw, 104px);
+  width: clamp(88px, 16vw, 112px);
   height: auto;
 }
 
@@ -51,21 +63,23 @@
 .desktop-nav__link {
   display: inline-flex;
   align-items: center;
-  padding: 0.45rem 0.7rem;
+  padding: 0.5rem 0.72rem;
   border-radius: var(--radius-pill);
   font-weight: var(--weight-medium);
-  font-size: var(--text-sm);
-  color: var(--color-ink);
+  font-size: 0.9rem;
+  color: var(--color-ink-soft);
   text-decoration: none;
   transition: background-color var(--transition-fast), color var(--transition-fast);
 }
 
 .desktop-nav__link:hover {
   background: var(--color-surface-alt);
+  color: var(--color-ink);
 }
 
 .desktop-nav__link.is-active {
-  color: var(--color-brand);
+  color: var(--color-brand-strong);
+  background: var(--color-brand-softer);
   font-weight: var(--weight-semibold);
 }
 
@@ -81,16 +95,16 @@
 
 .desktop-nav__dropdown {
   position: absolute;
-  top: calc(100% + 10px);
+  top: calc(100% + 12px);
   left: 50%;
-  transform: translateX(-50%) translateY(6px);
-  min-width: 230px;
+  transform: translateX(-50%) translateY(8px);
+  min-width: 250px;
   padding: var(--space-2);
   margin: 0;
   list-style: none;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-lg);
   box-shadow: var(--shadow-lg);
   opacity: 0;
   visibility: hidden;
@@ -106,13 +120,18 @@
 
 .desktop-nav__dropdown a {
   display: block;
-  padding: 0.65rem 0.9rem;
+  padding: 0.7rem 0.85rem;
   border-radius: var(--radius-sm);
   color: var(--color-ink);
   font-size: var(--text-sm);
   font-weight: var(--weight-medium);
   text-decoration: none;
-  transition: background-color var(--transition-fast), color var(--transition-fast);
+  transition: background-color var(--transition-fast), color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.desktop-nav__dropdown a:hover {
+  transform: translateX(2px);
 }
 
 .desktop-nav__dropdown a:hover {
@@ -140,12 +159,8 @@
   transition: color var(--transition-fast);
 }
 
-.phone-link::before {
-  content: "";
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--color-brand);
+.phone-link svg {
+  color: var(--color-brand);
 }
 
 .phone-link:hover {
@@ -167,7 +182,7 @@
 /* ---------- Mobile menu ---------- */
 .mobile-menu {
   position: fixed;
-  inset: 56px 0 0 0;
+  inset: var(--header-h) 0 0 0;
   z-index: var(--z-overlay);
   display: flex;
   flex-direction: column;
@@ -252,6 +267,25 @@
 }
 
 /* ---------- Breakpoints ---------- */
+@media (max-width: 639px) {
+  :root {
+    --header-h: 66px;
+  }
+
+  .site-header__inner {
+    gap: var(--space-4);
+  }
+
+  .brand img {
+    width: 94px;
+  }
+
+  .menu-toggle {
+    width: 42px;
+    height: 42px;
+  }
+}
+
 @media (min-width: 1024px) {
   .desktop-nav {
     display: block;
@@ -269,5 +303,24 @@
 @media (max-width: 1120px) and (min-width: 1024px) {
   .phone-link {
     display: none;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1200px) {
+  .site-header__inner {
+    gap: var(--space-4);
+  }
+
+  .desktop-nav__list {
+    gap: 2px;
+  }
+
+  .desktop-nav__link {
+    padding: 0.45rem 0.5rem;
+    font-size: 0.83rem;
+  }
+
+  .site-header__actions {
+    gap: var(--space-3);
   }
 }

@@ -70,6 +70,10 @@ A service-based gallery with category filtering for:
 
 Illustrative imagery is intentionally not presented as verified completed client work.
 
+### 📰 Blog & reviews
+
+The site includes a blog with practical property-care articles, plus a reviews page that clearly labels sample content until genuine, permission-based feedback is published.
+
 ### 📋 Quote & Contact
 
 Visitors can request a quote, send a contact message, call the business, email the business, and access the company's social channels.
@@ -118,6 +122,7 @@ web/lib/seo.ts
 └── web/
     ├── app/
     │   ├── about/
+    │   ├── blog/
     │   ├── contact/
     │   ├── faq/
     │   ├── gallery/
@@ -275,8 +280,8 @@ https://www.instagram.com/mpm_services
 ### Clone
 
 ~~~bash
-git clone https://github.com/livelyfun/Melbourne-Property-Management-and-Services-Australia.git
-cd Melbourne-Property-Management-and-Services-Australia
+git clone https://github.com/livelyfun/Melbourne-Property-Management-and-Services-opencode-.git
+cd Melbourne-Property-Management-and-Services-opencode-
 ~~~
 
 ### Enter the web application
@@ -338,6 +343,7 @@ CtaSection
 ServiceCard
 GalleryGrid
 ImageCard
+ReviewCard
 
 ContactForm
 QuoteForm
@@ -365,6 +371,8 @@ web/lib/
     ├── services.ts
     ├── gallery.ts
     ├── faqs.ts
+    ├── posts.ts
+    ├── reviews.ts
     └── service-areas.ts
 ~~~
 

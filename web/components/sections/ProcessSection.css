@@ -6,6 +6,7 @@
   grid-template-columns: 1fr;
   gap: var(--space-6);
   counter-reset: step;
+  position: relative;
 }
 
 .process-step {
@@ -24,11 +25,17 @@
 }
 
 .process-step__number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-brand);
   font-family: var(--font-display);
   font-weight: var(--weight-extrabold);
-  font-size: var(--text-4xl);
+  font-size: var(--text-xl);
   color: var(--color-brand);
-  opacity: 0.9;
 }
 
 .process-step__title {
@@ -43,11 +50,42 @@
   line-height: var(--leading-base);
 }
 
+.process-steps::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  top: calc(var(--space-8) + 27px);
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-surface-dark-border) 5%,
+    var(--color-surface-dark-border) 95%,
+    transparent
+  );
+}
+
+.process-step {
+  z-index: 1;
+}
+
 /* Light variant (used on service detail pages) */
 .process-steps--light .process-step {
   background: var(--color-surface);
   border-color: var(--color-border);
   box-shadow: var(--shadow-sm);
+}
+
+.process-steps--light::before {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-border) 5%,
+    var(--color-border) 95%,
+    transparent
+  );
 }
 
 .process-steps--light .process-step__title {

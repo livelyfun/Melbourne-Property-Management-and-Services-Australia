@@ -43,7 +43,6 @@ export default function ContactPage() {
         eyebrow="Contact"
         title="Let's talk about your property"
         subtitle="Whatever you need — a question, a quick idea, or a full quote — we're easy to reach. Choose what works best for you."
-        crumbs={[{ label: "Home", href: "/" }, { label: "Contact" }]}
       />
 
       <section className="section" aria-labelledby="contact-heading">

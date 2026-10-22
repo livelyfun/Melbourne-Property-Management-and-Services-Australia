@@ -54,13 +54,6 @@ export default async function ServiceDetailPage({ params }: Props) {
           <div className="service-hero__overlay" />
         </div>
         <div className="container service-hero__inner">
-          <nav className="breadcrumbs" aria-label="Breadcrumb">
-            <ol>
-              <li><Link href="/">Home</Link></li>
-              <li><Link href="/services">Services</Link></li>
-              <li><span aria-current="page">{service.name}</span></li>
-            </ol>
-          </nav>
           <p className="eyebrow eyebrow--on-dark">MPM Services</p>
           <h1 className="service-hero__title">{service.name}</h1>
           <p className="service-hero__summary">{service.summary}</p>

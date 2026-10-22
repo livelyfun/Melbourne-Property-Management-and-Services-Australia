@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { mainNav, site } from "@/lib/site";
+import Icon from "@/components/ui/Icon";
 import "./Navbar.css";
 
 function MenuIcon({ open }: { open: boolean }) {
@@ -38,15 +39,54 @@ function MenuIcon({ open }: { open: boolean }) {
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+
+  useEffect(() => {
+    let lastY = window.scrollY;
+    let ticking = false;
+
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const y = window.scrollY;
+        const delta = y - lastY;
+
+        setScrolled(y > 12);
+
+        if (y < 90) {
+          setHidden(false);
+        } else if (delta > 8) {
+          setHidden(true);
+        } else if (delta < -8) {
+          setHidden(false);
+        }
+
+        lastY = y;
+        ticking = false;
+      });
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const headerHidden = hidden && !open;
 
   useEffect(() => {
     const raf = requestAnimationFrame(() => {
       setOpen(false);
       setServicesOpen(false);
+      setHidden(false);
     });
     return () => cancelAnimationFrame(raf);
   }, [pathname]);
+
+  useEffect(() => {
+    document.documentElement.dataset.navHidden = headerHidden ? "true" : "false";
+  }, [headerHidden]);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -80,55 +120,67 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="site-header">
+      <header
+        className={`site-header${scrolled ? " is-scrolled" : ""}${
+          hidden && !open ? " is-hidden" : ""
+        }`}
+        onFocusCapture={() => setHidden(false)}
+      >
       <div className="container site-header__inner">
         <Link href="/" className="brand" aria-label={`${site.brand} home`}>
           <Image
-            src="/images/website_logo.svg"
+            src="/images/website_logo.png"
             alt={`${site.name} logo`}
-            width={104}
-            height={31}
+            width={112}
+            height={96}
             priority
           />
         </Link>
 
         <nav className="desktop-nav" aria-label="Primary navigation">
           <ul className="desktop-nav__list">
-            {mainNav.map((item) => (
-              <li
-                key={item.href}
-                className={item.children ? "has-children" : ""}
-              >
-                <Link
-                  href={item.href}
-                  className={
-                    pathname === item.href ||
-                    (item.href === "/services" && pathname.startsWith("/services"))
-                      ? "desktop-nav__link is-active"
-                      : "desktop-nav__link"
-                  }
-                  aria-haspopup={item.children ? "true" : undefined}
+            {mainNav.map((item) => {
+              const isActive =
+                pathname === item.href ||
+                (item.href === "/services" && pathname.startsWith("/services")) ||
+                (item.href === "/blog" && pathname.startsWith("/blog"));
+              return (
+                <li
+                  key={item.href}
+                  className={item.children ? "has-children" : ""}
                 >
-                  {item.label}
-                </Link>
-                {item.children && (
-                  <ul className="desktop-nav__dropdown" role="menu">
-                    {item.children.map((child) => (
-                      <li key={child.href}>
-                        <Link href={child.href} role="menuitem">
-                          {child.label}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </li>
-            ))}
+                  <Link
+                    href={item.href}
+                    className={
+                      isActive
+                        ? "desktop-nav__link is-active"
+                        : "desktop-nav__link"
+                    }
+                    aria-current={isActive ? "page" : undefined}
+                    aria-haspopup={item.children ? "true" : undefined}
+                  >
+                    {item.label}
+                  </Link>
+                  {item.children && (
+                    <ul className="desktop-nav__dropdown" role="menu">
+                      {item.children.map((child) => (
+                        <li key={child.href}>
+                          <Link href={child.href} role="menuitem">
+                            {child.label}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </li>
+              );
+            })}
           </ul>
         </nav>
 
         <div className="site-header__actions">
           <a href={`tel:${site.phoneIntl}`} className="phone-link">
+            <Icon name="phone" size={15} />
             {site.phoneDisplay}
           </a>
           <Link href="/quote" className="btn btn--primary btn--md">
@@ -186,8 +238,13 @@ export default function Navbar() {
                   <Link
                     href={item.href}
                     className={
-                      pathname === item.href ? "mobile-menu__link is-active" : "mobile-menu__link"
+                      pathname === item.href ||
+                      (item.href === "/services" && pathname.startsWith("/services")) ||
+                      (item.href === "/blog" && pathname.startsWith("/blog"))
+                        ? "mobile-menu__link is-active"
+                        : "mobile-menu__link"
                     }
+                    aria-current={pathname === item.href ? "page" : undefined}
                   >
                     {item.label}
                   </Link>

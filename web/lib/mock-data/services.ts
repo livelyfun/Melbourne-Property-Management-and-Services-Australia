@@ -27,10 +27,10 @@ export const services: Service[] = [
     href: "/services/steam-cleaning",
     heroImage: "/images/steam-cleaning-hero.jpg",
     heroImageAlt:
-      "Professional steam cleaning in progress on a carpet inside a Melbourne property",
+      "Professional cleaner using wet extraction equipment in a bright commercial space",
     cardImage: "/images/steam-cleaning-detail.jpg",
     cardImageAlt:
-      "Close-up of a professional steam cleaning tool lifting dirt from carpet fibres",
+      "Upholstery being deep cleaned with a professional cleaning machine",
     summary:
       "Deep, thorough steam cleaning for carpets, rugs, upholstery, sofas and mattresses — helping refresh high-traffic areas and leave interiors feeling fresher.",
     overview: [
@@ -108,10 +108,10 @@ export const services: Service[] = [
     href: "/services/strip-and-polish",
     heroImage: "/images/strip-polish-floor.jpg",
     heroImageAlt:
-      "Professionally stripped and polished hard floor with a clean, subtle shine",
+      "Professional floor machine stripping and polishing a hard floor",
     cardImage: "/images/strip-polish-detail.jpg",
     cardImageAlt:
-      "Worker applying polish to a hard floor during a professional strip and polish service",
+      "Close-up of a rotary floor machine polishing a hard floor",
     summary:
       "Professional stripping and polishing for hard floors — removing old layers of wax and finish and reapplying a clean, level finish that brings tired floors back to life.",
     overview: [
@@ -184,10 +184,10 @@ export const services: Service[] = [
     href: "/services/property-maintenance",
     heroImage: "/images/property-maintenance-hero.jpg",
     heroImageAlt:
-      "Property maintenance work being carried out on a Melbourne property",
+      "Modern Melbourne home at dusk, well maintained and presented",
     cardImage: "/images/property-maintenance-detail.jpg",
     cardImageAlt:
-      "Maintenance worker with tools carrying out practical upkeep inside a property",
+      "Tradesperson completing a practical interior repair",
     summary:
       "Practical property maintenance to help keep homes, rentals and commercial spaces clean, presentable and well looked after — so properties stay in good shape year-round.",
     overview: [

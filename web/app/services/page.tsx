@@ -18,7 +18,6 @@ export default function ServicesPage() {
         eyebrow="Services"
         title="Three core services, one dependable team"
         subtitle="We keep our offering focused so we can deliver each service well. Browse what MPM Services does across Melbourne — or jump straight to a free quote."
-        crumbs={[{ label: "Home", href: "/" }, { label: "Services" }]}
       />
 
       <section className="section" aria-label="Our services">

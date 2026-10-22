@@ -35,15 +35,6 @@
   padding-block: var(--space-12) var(--space-12);
 }
 
-.service-hero__inner .breadcrumbs {
-  margin-bottom: var(--space-8);
-  color: var(--color-ink-inverse-soft);
-}
-
-.service-hero__inner .breadcrumbs a {
-  color: var(--color-brand-on-dark);
-}
-
 .service-hero__title {
   max-width: 22ch;
   font-size: var(--text-4xl);

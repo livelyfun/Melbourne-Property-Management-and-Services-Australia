@@ -7,7 +7,7 @@ type ImageCardProps = {
   alt: string;
   caption?: string;
   label?: string;
-  aspect?: "wide" | "tall" | "square" | "auto";
+  aspect?: "wide" | "tall" | "square" | "panorama" | "auto";
   sizes?: string;
   priority?: boolean;
   style?: CSSProperties;
@@ -26,10 +26,15 @@ export default function ImageCard({
   return (
     <figure className={`image-card image-card--${aspect}`} style={style}>
       <div className="image-card__media">
-        {label ? <span className="image-card__label">{label}</span> : null}
         <Image src={src} alt={alt} fill sizes={sizes} priority={priority} />
+        <span className="image-card__shade" aria-hidden="true" />
+        {label ? <span className="image-card__label">{label}</span> : null}
       </div>
-      {caption ? <figcaption className="image-card__caption">{caption}</figcaption> : null}
+      {caption ? (
+        <figcaption className="image-card__caption">
+          <span>{caption}</span>
+        </figcaption>
+      ) : null}
     </figure>
   );
 }

@@ -16,7 +16,6 @@ export default function PrivacyPage() {
         eyebrow="Legal"
         title="Privacy Policy"
         subtitle="A plain-English summary of how MPM Services handles personal information."
-        crumbs={[{ label: "Home", href: "/" }, { label: "Privacy Policy" }]}
       />
 
       <section className="section">

@@ -1,16 +1,17 @@
 import type { Metadata } from "next";
 import PageHeader from "@/components/ui/PageHeader";
 import Reveal from "@/components/ui/Reveal";
-import SectionHeading from "@/components/ui/SectionHeading";
+import ReviewCard from "@/components/reviews/ReviewCard";
 import CtaSection from "@/components/sections/CtaSection";
 import Icon from "@/components/ui/Icon";
+import { reviewDisclaimer, reviews, reviewStats } from "@/lib/mock-data/reviews";
 import { site } from "@/lib/site";
 import "../reviews.css";
 
 export const metadata: Metadata = {
   title: "Reviews",
   description:
-    "Genuine customer reviews for MPM Services Melbourne. We're collecting and verifying real feedback — see our latest updates on Facebook and Instagram.",
+    "Read feedback from MPM Services customers across Melbourne. This page shows a sample review layout while genuine, verified customer reviews are collected with permission.",
   alternates: { canonical: `${site.url}/reviews` },
 };
 
@@ -32,38 +33,60 @@ export default function ReviewsPage() {
     <>
       <PageHeader
         eyebrow="Reviews"
-        title="Genuine customer feedback"
-        subtitle="We're committed to honesty. Verified reviews from real MPM Services customers will appear on this page as they are collected and confirmed — nothing fabricated, ever."
-        crumbs={[{ label: "Home", href: "/" }, { label: "Reviews" }]}
+        title="What working with us is like"
+        subtitle="We'd rather earn trust than invent it. The reviews below are sample content that shows how verified customer feedback will appear — each one clearly marked until it is confirmed and published with permission."
       />
 
       <section className="section" aria-labelledby="reviews-page-heading">
-        <div className="container container--narrow">
+        <div className="container">
           <Reveal>
-            <SectionHeading
-              eyebrow="The honest state of things"
-              title="Reviews are on the way"
-              subtitle="MPM Services treats reviews as proof of trust. Rather than inventing feedback, this page will be filled with real, verifiable customer experiences — starting with the first confirmed reviews."
-              align="center"
-              id="reviews-page-heading"
-            />
-          </Reveal>
-
-          <Reveal delay={120}>
-            <div className="reviews-empty" role="note">
-              <span className="reviews-empty__icon" aria-hidden="true">
-                <Icon name="star" size={30} />
-              </span>
-              <h3>No verified reviews yet</h3>
-              <p>
-                We don&apos;t fake reviews. Once genuine customer feedback is collected and
-                verified, it will be published here with the customer&apos;s permission.
-              </p>
+            <div className="reviews-summary">
+              <div className="reviews-summary__score">
+                <p className="reviews-summary__number">{reviewStats.average}</p>
+                <span className="reviews-summary__stars" aria-hidden="true">
+                  {Array.from({ length: 5 }).map((_, index) => (
+                    <Icon key={index} name="star" size={18} className="is-filled" />
+                  ))}
+                </span>
+                <p className="reviews-summary__caption">
+                  Based on {reviewStats.count} sample reviews
+                </p>
+              </div>
+              <div className="reviews-summary__breakdown">
+                {reviewStats.breakdown.map((row) => (
+                  <div className="reviews-summary__row" key={row.stars}>
+                    <span className="reviews-summary__row-label">{row.stars} star</span>
+                    <span className="reviews-summary__bar" aria-hidden="true">
+                      <span
+                        style={{
+                          width: `${(row.count / reviewStats.count) * 100}%`,
+                        }}
+                      />
+                    </span>
+                    <span className="reviews-summary__row-count">{row.count}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           </Reveal>
 
-          <Reveal delay={180}>
-            <ul className="reviews-sources" style={{ marginTop: "var(--space-8)" }} role="list">
+          <div className="reviews-page__grid" aria-labelledby="reviews-page-heading">
+            <h2 id="reviews-page-heading" className="sr-only">
+              Customer reviews
+            </h2>
+            {reviews.map((review, index) => (
+              <Reveal key={review.id} delay={index * 60}>
+                <ReviewCard review={review} />
+              </Reveal>
+            ))}
+          </div>
+
+          <p className="reviews-disclaimer" role="note">
+            <strong>Please note:</strong> {reviewDisclaimer}
+          </p>
+
+          <Reveal delay={120}>
+            <ul className="reviews-sources" role="list">
               {sources.map((source) => (
                 <li key={source.label}>
                   <a
@@ -85,7 +108,7 @@ export default function ReviewsPage() {
             </ul>
           </Reveal>
 
-          <Reveal delay={220}>
+          <Reveal delay={180}>
             <div className="reviews-invite">
               <h3>Had work done by MPM Services?</h3>
               <p>
