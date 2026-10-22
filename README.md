@@ -280,8 +280,8 @@ https://www.instagram.com/mpm_services
 ### Clone
 
 ~~~bash
-git clone https://github.com/livelyfun/Melbourne-Property-Management-and-Services-opencode-.git
-cd Melbourne-Property-Management-and-Services-opencode-
+git clone https://github.com/livelyfun/Melbourne-Property-Management-and-Services-Australia.git
+cd Melbourne-Property-Management-and-Services-Australia
 ~~~
 
 ### Enter the web application
